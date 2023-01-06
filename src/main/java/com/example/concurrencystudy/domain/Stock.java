@@ -11,17 +11,17 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class StockEntity {
+public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long productId;
 	private Long quantity;
 
-	public StockEntity() {
+	public Stock() {
 	}
 
-	public StockEntity(Long productId, Long quantity) {
+	public Stock(Long productId, Long quantity) {
 		this.productId = productId;
 		this.quantity = quantity;
 	}

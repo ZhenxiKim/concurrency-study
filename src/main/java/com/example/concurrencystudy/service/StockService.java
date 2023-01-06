@@ -2,7 +2,7 @@ package com.example.concurrencystudy.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.concurrencystudy.domain.StockEntity;
+import com.example.concurrencystudy.domain.Stock;
 import com.example.concurrencystudy.repository.StockRepository;
 
 /**
@@ -19,8 +19,8 @@ public class StockService {
 	}
 
 	public void decreaseStock(Long id, Long quantity) throws Exception {
-		StockEntity stockEntity = stockRepository.findById(id).orElseThrow(Exception::new);
-		stockEntity.decrease(quantity);
-		stockRepository.saveAndFlush(stockEntity);
+		Stock stock = stockRepository.findById(id).orElseThrow(Exception::new);
+		stock.decrease(quantity);
+		stockRepository.saveAndFlush(stock);
 	}
 }
