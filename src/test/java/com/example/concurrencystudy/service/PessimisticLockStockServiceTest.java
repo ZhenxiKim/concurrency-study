@@ -17,14 +17,14 @@ import com.example.concurrencystudy.repository.StockRepository;
 
 /**
  * @author jhkim
- * @since 2023/01/06
+ * @since 2023/01/07
  *
  */
 @SpringBootTest
-class StockServiceTest {
+class PessimisticLockStockServiceTest {
 
 	@Autowired
-	private StockService stockService;
+	private PessimisticLockStockService stockService;
 
 	@Autowired
 	private StockRepository stockRepository;
@@ -41,9 +41,12 @@ class StockServiceTest {
 	}
 
 	@Test
-	public void stock_decrease() throws Exception {
+	public void decrease_test() throws Exception {
 		stockService.decreaseStock(1L, 1L);
+
 		Stock stock = stockRepository.findById(1L).orElseThrow(Exception::new);
+		// 100 - 1 = 99
+
 		assertEquals(99, stock.getQuantity());
 	}
 
